@@ -30,6 +30,7 @@ _LOGGER = logging.getLogger(__name__)
 CONF_STATION_ID = "station_id"
 
 DEFAULT_NAME = "NOAA Tides"
+DEFAULT_SUMMARY_ICON = "mdi:waves"
 DEFAULT_TIMEZONE = "lst_ldt"
 
 SCAN_INTERVAL = timedelta(minutes=60)
@@ -110,6 +111,11 @@ class NOAATidesAndCurrentsSensor(SensorEntity):
     def name(self) -> str:
         """Return the name of the sensor."""
         return self._name
+
+    @property
+    def icon(self) -> str:
+        """Return the icon of the sensor."""
+        return DEFAULT_SUMMARY_ICON
 
     @property
     def extra_state_attributes(self) -> dict[str, Any]:
