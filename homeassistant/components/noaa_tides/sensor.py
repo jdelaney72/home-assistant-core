@@ -114,7 +114,10 @@ class NOAATidesAndCurrentsSensor(SensorEntity):
     @property
     def extra_state_attributes(self) -> dict[str, Any]:
         """Return the state attributes of this device."""
-        attr: dict[str, Any] = {}
+        attr: dict[str, Any] = {
+            "unit_system": self._unit_system,
+            "timezone": self._timezone,
+        }
         if self.data is None:
             return attr
         if self.data["hi_lo"][1] == "H":
